@@ -1,27 +1,12 @@
-# Load DSL and set up stages
-require 'capistrano/setup'
+require 'zendesk/deployment'
 
-# Include default deployment tasks
-require 'capistrano/deploy'
+set :application, 'test_samson_deploys'
+set :repository,  'git@github.com:zendesk-shender/test_samson_deploy.git'
+set :email_notification, ['shender@zendesk.com']
 
-# Include tasks from other gems included in your Gemfile
-#
-# For documentation on these, see for example:
-#
-#   https://github.com/capistrano/rvm
-#   https://github.com/capistrano/rbenv
-#   https://github.com/capistrano/chruby
-#   https://github.com/capistrano/bundler
-#   https://github.com/capistrano/rails
-#   https://github.com/capistrano/passenger
-#
-# require 'capistrano/rvm'
-# require 'capistrano/rbenv'
-# require 'capistrano/chruby'
-# require 'capistrano/bundler'
-# require 'capistrano/rails/assets'
-# require 'capistrano/rails/migrations'
-# require 'capistrano/passenger'
-
-# Load custom tasks from `lib/capistrano/tasks' if you have any defined
-Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
+desc 'Select my random server'
+task :local_server do
+  set :environment, 'test_server' # Just name this environment
+  set :rails_env, 'staging'       # The RAILS_ENV of this environment
+  role :deploy, 'localhost'  # Give your server the :deploy role
+end

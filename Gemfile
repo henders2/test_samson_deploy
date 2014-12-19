@@ -27,4 +27,4 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'capistrano'
-
+gem 'zendesk_deployment', git: 'git@github.com:zendesk/zendesk_deployment.git'
