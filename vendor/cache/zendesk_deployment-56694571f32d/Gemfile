@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+
+# Specify your gem's dependencies in zendesk_deployment.gemspec
+gemspec
+
+group :development do
+  gem 'byebug', :platforms => [:ruby_20, :ruby_21]
+end

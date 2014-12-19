@@ -1,0 +1,35 @@
+require 'bundler/setup'
+
+require 'zendesk/deployment'
+
+# logger.level = Capistrano::Logger::INFO
+
+set :application, 'zendesk_deployment'
+set :deploy_project_name, 'radar'
+set :repository,  'git@github.com:zendesk/zendesk_deployment.git'
+
+set :ruby_version, 'ree'
+
+set :environments, [:master1, :master2, :staging, :qa, :pod1, :pod2, :pod3]
+
+desc "Select custom environment"
+task :test_env do
+  set :environment, 'test_env'
+  set :rails_env, 'master'
+
+  set :gateway, 'pod1'
+  ssh_options[:forward_agent] = true
+
+  role :deploy, 'master01'
+end
+
+set :email_notification, 'mick@zendesk.com'
+
+#don't bundle when test deploying this repo
+set :gemfile, nil
+
+namespace :deploy do
+  task :restart do
+    # nothing to do here
+  end
+end

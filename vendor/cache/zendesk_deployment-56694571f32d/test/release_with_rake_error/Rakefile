@@ -1,0 +1,14 @@
+$ran_migrations = false
+
+namespace :db do
+  desc 'USED IN TESTS. Raises a generic rake error when checking pending migrations'
+  task :abort_if_pending_migrations do
+    abort 'rake aborted!' unless $ran_migrations
+  end
+
+  desc 'USED IN TESTS. Migrate the database'
+  task :migrate do
+    $ran_migrations = true
+  end
+
+end

@@ -1,0 +1,14 @@
+$ran_migrations = false
+
+namespace :db do
+  desc 'USED IN TESTS. Raises an error if there are pending migrations'
+  task :abort_if_pending_migrations do
+    abort 'Run "rake db:migrate" to update your database then try again.' unless $ran_migrations
+  end
+
+  desc 'USED IN TESTS. Migrate the database'
+  task :migrate do
+    $ran_migrations = true
+  end
+
+end

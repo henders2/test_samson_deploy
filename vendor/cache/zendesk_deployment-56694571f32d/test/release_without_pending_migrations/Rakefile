@@ -1,0 +1,10 @@
+namespace :db do
+  desc 'USED IN TESTS. Raises an error if there are pending migrations'
+  task :abort_if_pending_migrations do
+  end
+
+  desc 'USED IN TESTS. Migrate the database'
+  task :migrate do
+  end
+
+end

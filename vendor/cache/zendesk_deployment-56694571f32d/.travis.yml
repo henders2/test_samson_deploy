@@ -1,0 +1,10 @@
+rvm:
+  - 1.9.3
+  - 2.0
+  - 2.1
+  - jruby
+before_script:
+  - export TRAVIS=1
+  - git config --global user.email "you@example.com"
+  - git config --global user.name "Your Name"
+  - gem i bundler -v 1.7.4

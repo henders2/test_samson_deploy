@@ -1,0 +1,3 @@
+production:
+  license_key: production_license
+  app_name: production_appname
