@@ -4,10 +4,16 @@ machine:
 
 dependencies:
   override:
-    - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3 
+    - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
     - sudo pip install -U fig
 
 test:
   override:
     - fig run -d --no-deps web
     - bundle exec rake test
+
+deployment:
+  hub:
+    branch: master
+    commands:
+      - $DEPLOY
