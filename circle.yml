@@ -1,0 +1,8 @@
+machine:
+  services:
+    - docker
+
+test:
+  override:
+    - fig run -d --no-deps web
+    - bundle exec rake test
